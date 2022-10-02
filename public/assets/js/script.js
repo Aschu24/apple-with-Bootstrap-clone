@@ -1,5 +1,7 @@
 // here is javascript code for animation
-const searchButton = document.querySelector("nav .nav-item-wrapper .search-link");
+const searchButton = document.querySelector(
+  "nav .nav-item-wrapper .search-link"
+);
 const closeButton = document.querySelector(".search-container .close-link");
 const navItemWrapper = document.querySelector(".nav-item-wrapper");
 const searchContainer = document.querySelector(".search-container");
@@ -26,10 +28,14 @@ const headerContainer = document.querySelector(".header-container");
 menuIconContainer.addEventListener("click", () => {
   headerContainer.classList.toggle("active");
 });
-const searchBar = document.querySelector(".mobile-search-container .search-bar");
+const searchBar = document.querySelector(
+  ".mobile-search-container .search-bar"
+);
 const nav = document.querySelector(".header-container nav");
 const searchInput = document.querySelector(".mobile-search-container input");
-const cancelBtn = document.querySelector(".mobile-search-container .cancel-btn");
+const cancelBtn = document.querySelector(
+  ".mobile-search-container .cancel-btn"
+);
 
 searchInput.addEventListener("click", () => {
   searchBar.classList.add("active");
@@ -43,61 +49,56 @@ cancelBtn.addEventListener("click", () => {
 });
 //  removing active class when I resizing windows screen
 
-window.addEventListener("resize",  ()=> {
-  if (window.innerWidth > 768)
-  headerContainer.classList.remove("active");
- 
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) headerContainer.classList.remove("active");
 });
 window.addEventListener("resize", () => {
-  if (window.innerWidth <768) 
-  searchContainer.classList.add("hide");
+  if (window.innerWidth < 768) searchContainer.classList.add("hide");
 });
 window.addEventListener("resize", () => {
-  if (window.innerWidth <768) 
-  navItemWrapper.classList.remove("hide");
+  if (window.innerWidth < 768) navItemWrapper.classList.remove("hide");
 });
 window.addEventListener("resize", () => {
-  if (window.innerWidth <768) 
-  overlay.classList.remove("show");
+  if (window.innerWidth < 768) overlay.classList.remove("show");
 });
 
 // window.addEventListener("resize", () => {
-//    if (window.innerWidth >768) 
+//    if (window.innerWidth >768)
 //    navItemWrapper.classList.remove("hide");
 //    searchContainer.classList.add("hide");
 //    overlay.classList.remove("show");
 // });
 
-  // =======================footer script code================================================
-  $(document).ready(function () {
-    toggleAble();
-  });
-  function toggleAble() {
+// =======================footer script code================================================
+$(document).ready(function () {
+  toggleAble();
+});
+function toggleAble() {
+  if ($(window).width() <= 768) {
+    $(".footer-links-wrapper").addClass("toggleClass");
+  } else {
+    $(".footer-links-wrapper").removeClass("toggleClass");
+  }
+  $(window).on("resize", function () {
     if ($(window).width() <= 768) {
       $(".footer-links-wrapper").addClass("toggleClass");
+      $(".footer-links-wrapper ul").hide();
     } else {
       $(".footer-links-wrapper").removeClass("toggleClass");
+      $(".footer-links-wrapper ul").show();
+      $(".footer-links-wrapper h4").removeClass("expanded");
     }
-    $(window).on("resize", function () {
-      if ($(window).width() <= 768) {
-        $(".footer-links-wrapper").addClass("toggleClass");
-        $(".footer-links-wrapper ul").hide();
-      } else {
-        $(".footer-links-wrapper").removeClass("toggleClass");
-        $(".footer-links-wrapper ul").show();
-        $(".footer-links-wrapper h4").removeClass("expanded");
-      }
-    });
-    //footer collapse functionality
-    $(document).on("click", ".toggleClass h4", function () {
-      $(this).next("ul").slideToggle();
-      $(this).toggleClass("expanded");
-      //console.log("toggleClass"); 
-    });
-    // search bar
-    // $(".search-link").click(function (event) {
-    //     event.preventDefault();
-    //     $("navbar-collapse.collapse").removeClass("show");
-    //     $(".searchbox").slideToggle();
-    // })
-  }
+  });
+  //footer collapse functionality
+  $(document).on("click", ".toggleClass h4", function () {
+    $(this).next("ul").slideToggle();
+    $(this).toggleClass("expanded");
+    //console.log("toggleClass");
+  });
+  // search bar
+  // $(".search-link").click(function (event) {
+  //     event.preventDefault();
+  //     $("navbar-collapse.collapse").removeClass("show");
+  //     $(".searchbox").slideToggle();
+  // })
+}
